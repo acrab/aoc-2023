@@ -4,7 +4,7 @@ import kotlin.math.min
 
 fun main() {
     fun part1(input: List<String>): Int = input.sumOf { line ->
-        "${line.first { it.isDigit() }}${line.last { it.isDigit() }}".toInt()
+        (line.first { it.isDigit() }.digitToInt() * 10) + line.last { it.isDigit() }.digitToInt()
     }
 
     val numbers = mapOf(
@@ -18,14 +18,6 @@ fun main() {
         "eight" to "8",
         "nine" to "9",
     )
-
-//    fun part2(input: List<String>): Int = input.sumOf { line ->
-//        val firstDigitString = numbers.asIterable().fold(line) { processed, item -> processed.replace(item.key, item.value) }.first{it.isDigit()}
-//        println("Processed $line into $firstDigitString")
-//        val lastDigitString = numbers.asIterable().fold(line.reversed()) { processed, item -> processed.replace(item.key.reversed(), item.value) }.first{it.isDigit()}
-//        println("Processed $line into $lastDigitString")
-//        "$firstDigitString$lastDigitString".toInt()
-//    }
 
     fun part2(input: List<String>): Int = input.sumOf { line ->
         val firstDigit = numbers.minBy { number ->
