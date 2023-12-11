@@ -2,6 +2,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
+import kotlin.math.sqrt
 
 /**
  * Reads lines from the given input txt file.
@@ -25,3 +26,10 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+fun quadraticFormula(a: Double, b: Double, c: Double): Pair<Double, Double> {
+    val denominator = 2 * a
+    val discriminant = sqrt(b * b - (4 * a * c))
+    val frontBit = -1 * b
+    return (frontBit - discriminant) / denominator to (frontBit + discriminant) / denominator
+}
