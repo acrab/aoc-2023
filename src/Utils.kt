@@ -33,3 +33,27 @@ fun quadraticFormula(a: Double, b: Double, c: Double): Pair<Double, Double> {
     val frontBit = -1 * b
     return (frontBit - discriminant) / denominator to (frontBit + discriminant) / denominator
 }
+
+var primes = mutableListOf(2L)
+
+fun findPrimesLessThan(value: Long) {
+    for (i in 2..value) {
+        if (primes.all { i % it != 0L }) {
+            primes.add((i))
+        }
+    }
+}
+
+fun primeFactorsOf(value: Long): List<Long> {
+    // prefill the primes list
+    findPrimesLessThan(value)
+    return primes.map {
+        var count = 0L
+        var current = value
+        while (current % it == 0L) {
+            count++
+            current /= it
+        }
+        count
+    }
+}
