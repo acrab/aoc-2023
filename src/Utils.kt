@@ -57,3 +57,18 @@ fun primeFactorsOf(value: Long): List<Long> {
         count
     }
 }
+
+fun <T> List<List<T>>.orthogonalNeighbours(x: Int, y: Int, default: T): List<T> {
+    val north = getOrNull(x - 1)?.get(y) ?: default
+    val south = getOrNull(x + 1)?.get(y) ?: default
+    val west = this[x].getOrElse(y - 1) { default }
+    val east = this[x].getOrElse(y + 1) { default }
+    return listOf(north, east, south, west)
+}
+
+enum class Compass {
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
+}

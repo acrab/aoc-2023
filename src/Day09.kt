@@ -1,4 +1,4 @@
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.*
 
 fun main() {
 
@@ -21,9 +21,9 @@ fun main() {
     val input = readInput("Day09")
     val testInput = readInput("Day09_test")
 
-    Truth.assertThat(execute(testInput, List<Long>::findNextNumber)).isEqualTo(114)
+    assertThat(execute(testInput, List<Long>::findNextNumber)).isEqualTo(114)
     println(execute(input, List<Long>::findNextNumber))
 
-    Truth.assertThat(execute(testInput, List<Long>::findPreviousNumber)).isEqualTo(2)
+    assertThat(execute(testInput, List<Long>::findPreviousNumber)).isEqualTo(2)
     println(execute(input, List<Long>::findPreviousNumber))
 }
